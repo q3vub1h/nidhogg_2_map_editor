@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://x1ruu3s0s4hw"]
+
+[ext_resource type="Script" uid="uid://d3pa6fwprv7yc" path="res://scripts/gizmo.gd" id="1_lv1lo"]
+[ext_resource type="Texture2D" uid="uid://cighu55noxmbd" path="res://assets/editor/gizmo.png" id="2_j7t22"]
+
+[node name="gizmo" type="Control"]
+z_index = 99
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lv1lo")
+
+[node name="texture_rect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -20.0
+offset_right = 18.0
+offset_bottom = 20.0
+texture = ExtResource("2_j7t22")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,153 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddq3ors7fdbqc"]
+
+[ext_resource type="Script" uid="uid://cwqw3oaw4sqyf" path="res://scripts/gui.gd" id="1_efmwq"]
+
+[node name="gui" type="CanvasLayer"]
+script = ExtResource("1_efmwq")
+
+[node name="menu_bar" type="MenuBar" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="File" type="PopupMenu" parent="menu_bar"]
+transparent_bg = false
+item_count = 5
+item_0/text = "New"
+item_0/id = 1
+item_1/text = "Save"
+item_1/id = 2
+item_2/text = "Open"
+item_2/id = 3
+item_3/id = 0
+item_3/separator = true
+item_4/text = "Exit"
+item_4/id = 4
+
+[node name="Editor" type="PopupMenu" parent="menu_bar"]
+item_count = 1
+item_0/text = "Settings"
+item_0/id = 0
+
+[node name="popup_panel" type="PopupPanel" parent="menu_bar"]
+title = "Settings"
+
+[node name="side_menu" type="Panel" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -277.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="inspector" type="VBoxContainer" parent="side_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="h_separator" type="HSeparator" parent="side_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="rooms" type="ScrollContainer" parent="side_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 329.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="v" type="VBoxContainer" parent="side_menu/rooms"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="make_new" type="HBoxContainer" parent="side_menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="add_room" type="Button" parent="side_menu/make_new"]
+layout_mode = 2
+text = "Add"
+
+[node name="room_name" type="LineEdit" parent="side_menu/make_new"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "New room name"
+
+[node name="room_temp" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 829.0
+offset_top = 170.0
+offset_right = 1122.0
+offset_bottom = 201.0
+
+[node name="name" type="CheckBox" parent="room_temp"]
+layout_mode = 2
+button_pressed = true
+text = "room_name"
+
+[node name="delete" type="Button" parent="room_temp"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "X"
+
+[node name="param_temp" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 833.0
+offset_top = 137.0
+offset_right = 873.0
+offset_bottom = 177.0
+
+[node name="name" type="Label" parent="param_temp"]
+layout_mode = 2
+text = "param_name"
+
+[node name="open_map_dialog" type="FileDialog" parent="."]
+title = "Open a File"
+position = Vector2i(8, 32)
+size = Vector2i(640, 610)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.txt")
+
+[node name="save_as_map_dialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+position = Vector2i(8, 32)
+size = Vector2i(640, 610)
+dialog_hide_on_ok = true
+access = 2
+filters = PackedStringArray("*.txt")
+
+[connection signal="id_pressed" from="menu_bar/File" to="." method="_on_file_id_pressed"]
+[connection signal="mouse_entered" from="side_menu" to="." method="_on_side_menu_mouse_entered"]
+[connection signal="mouse_exited" from="side_menu" to="." method="_on_side_menu_mouse_exited"]
+[connection signal="pressed" from="side_menu/make_new/add_room" to="." method="_on_add_room_pressed"]
+[connection signal="file_selected" from="open_map_dialog" to="." method="_on_open_map_dialog_file_selected"]
+[connection signal="file_selected" from="save_as_map_dialog" to="." method="_on_save_map_dialog_file_selected"]

@@ -1,0 +1,1 @@
+A free and open visual editor for Nidhogg 2
