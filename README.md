@@ -19,6 +19,13 @@ git clone https://github.com/q3vub1h/nidhogg_2_map_editor.git
 ```
 - Start developing!
 
+## Plans
+
+- Settings system
+- Adding new object to the map
+- Completing the inspector
+- Making the repeat X and Y parameters visual in the editor 
+
 ## Installation
 
 - Install the project from Releases (ON RELEASE)
